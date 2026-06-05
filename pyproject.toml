@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fluffy"
+version = "0.1.0"
+description = "Fluffy — Your cute, friendly, and loyal alien pet companion from the stars. Helps with tasks, tells terrible (but funny) jokes, gives loyal advice, and keeps you company in the terminal. Boop the snoot!"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Sven Normen Esslinger / Esslinger & Co. (and Fluffy, who claims partial copyright in the 7th dimension)" }
+]
+requires-python = ">=3.10"
+keywords = [
+    "fluffy", "alien", "pet", "companion", "cute", "funny", "cli", "helper",
+    "nexus", "nova", "esslinger", "loyal", "boop"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Games/Entertainment",
+    "Topic :: Utilities",
+    "Topic :: Artistic Software",
+    "Environment :: Console",
+]
+dependencies = [
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "black>=24.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+fluffy = "fluffy.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/digitaldesignerjazz/fluffy"
+Repository = "https://github.com/digitaldesignerjazz/fluffy"
+Issues = "https://github.com/digitaldesignerjazz/fluffy/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
+
+[tool.mypy]
+strict = true
+
+[tool.pytest.ini_options]
+asio_mode = "auto"
