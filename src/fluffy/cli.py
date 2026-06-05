@@ -4,6 +4,7 @@ Fluffy CLI — The main way to interact with your alien best friend.
 Usage:
     fluffy
     fluffy boop
+    fluffy boob  # silly alias
     fluffy status
     fluffy joke
     fluffy help-me "my code"
@@ -37,7 +38,9 @@ def main() -> None:
         command = sys.argv[1].lower()
         args = sys.argv[2:]
 
-        if command in ("boop", "snoot", "pat"):
+        if command in ("boop", "snoot", "pat", "boob"):
+            if command == "boob":
+                print_cute("Boob? Boob the snoot? Or are you trying to boob me, hooman? *happy but slightly confused tentacle wiggle* ZORP!")
             print_cute(pet.boop())
         elif command in ("status", "how-are-you", "mood"):
             print_cute(pet.status())
@@ -62,7 +65,7 @@ def main() -> None:
             print_cute(f"Fluffy summoned for {agent_id}!\n\n{effects['support_message']}\n\nEmotional support delivered: energy +{effects['energy_delta']}, fatigue {effects['fatigue_delta']}, loyalty +{effects['loyalty_delta']}")
         else:
             console.print(f"[red]I don't know the command '{command}' yet...[/red]")
-            console.print("Try: [bold]boop[/bold], [bold]status[/bold], [bold]joke[/bold], [bold]help-me[/bold], [bold]feed[/bold], [bold]play[/bold], [bold]summon AGENT_ID [reason][/bold], or just [bold]fluffy[/bold] for interactive mode!")
+            console.print("Try: [bold]boop[/bold] (or [bold]boob[/bold] if you're feeling silly), [bold]status[/bold], [bold]joke[/bold], [bold]help-me[/bold], [bold]feed[/bold], [bold]play[/bold], [bold]summon AGENT_ID [reason][/bold], or just [bold]fluffy[/bold] for interactive mode!")
         return
 
     # Interactive mode — the best way to hang out with Fluffy
@@ -91,7 +94,9 @@ def main() -> None:
 
             # Very simple natural language routing (Fluffy is not that smart yet)
             lower = user_input.lower()
-            if any(w in lower for w in ["boop", "pat", "snoot", "touch"]):
+            if any(w in lower for w in ["boop", "pat", "snoot", "touch", "boob"]):
+                if "boob" in lower and "boop" not in lower:
+                    print_cute("Boob? Did you mean boop the snoot? Hehe, Fluffy accepts all forms of booping! *giggles in alien*")
                 print_cute(pet.boop())
             elif any(w in lower for w in ["status", "how are you", "feeling", "mood"]):
                 print_cute(pet.status())
